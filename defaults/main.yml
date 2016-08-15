@@ -17,3 +17,4 @@ wp_admin_password: password
 wp_admin_email: admin@example.dev
 host: localhost
 env: development
+site_name: example.com
