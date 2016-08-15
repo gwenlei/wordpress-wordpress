@@ -9,7 +9,7 @@
 
 - name: Install WordPress tables
   command: wp core install
-    --url={{ hostvars.wordpress.ansible_ssh_host }}
+    --url={{ host }}
     --title={{ site_name }}
     --admin_user={{ wp_admin_user }}
     --admin_password={{ wp_admin_password }}
