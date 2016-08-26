@@ -5,25 +5,3 @@
 - name: Download WordPress
   command: wp core download --path={{ wp_root }} --locale={{ wp_lang }} --version={{ wp_version }} --allow-root creates={{ wp_root }}
 
-- name: Fetch random salts for WordPress config
-  command: curl http://api.wordpress.org/secret-key/1.1/salt/
-  register: wp_salt
-
-- name: Add WordPress config file
-  template: src=wp-config.php dest={{ wp_root }}
-
-- include: database.yml
-
-
-- name: Delete content
-  command: wp site empty --yes --allow-root chdir={{ wp_root }}
-  when: wp_delete_content
-
-- include: db_import.yml tags=import
-  when: wp_db_import|default(False)
-
-- name: Change ownership of WordPress installation
-  file: path={{ wp_root }} owner=www-data group=www-data state=directory recurse=yes
-
-- name: Change upload permissions
-  file: path={{ wp_root }}/wp-content/uploads mode=775 state=directory recurse=yes
