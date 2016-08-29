@@ -1,38 +1,51 @@
 Role Name
 =========
-
-A brief description of the role goes here.
+gwenlei.wordpress-wordpress
 
 Requirements
 ------------
-
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+ubuntu16.04 xenial
 
 Role Variables
 --------------
+defaults/main.yml
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+wp_admin_user: admin
+wp_cli_bin: /usr/bin/wp
+wp_cli_url: http://192.168.0.82/downloads/wp-cli.phar
+#wp_cli_url: https://raw.github.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+wp_db_host: localhost
+wp_db_import: false
+wp_debug: false
+wp_delete_content: false
+wp_lang: en_US
+wp_table_prefix: wp_
+wp_version: 4.4.2
+wp_root: /var/www/html/wordpress
+wp_db_name: example_com
+wp_db_user: example_user
+wp_db_password: password
+wp_admin_password: password
+wp_admin_email: admin@example.dev
+host: localhost
+env: development
+site_name: example.com
 
 Dependencies
 ------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+none
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
     - hosts: servers
       roles:
-         - { role: username.rolename, x: 42 }
+         - { role: gwenlei.wordpress-wordpress }
 
 License
 -------
-
-BSD
+MIT
 
 Author Information
 ------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+onecloud
